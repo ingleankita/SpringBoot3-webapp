@@ -20,8 +20,8 @@ public class RunRepository {
     }
 
     // Get run by id
-    Run findById(Integer id) {
-        return runs.stream().filter(run -> run.id() == id).findFirst().get();
+    Optional<Run> findById(Integer id) {
+        return runs.stream().filter(run -> run.id() == id).findFirst();
     }
 
     /*
