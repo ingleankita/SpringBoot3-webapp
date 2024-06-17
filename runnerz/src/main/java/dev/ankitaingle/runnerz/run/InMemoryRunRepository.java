@@ -40,11 +40,13 @@ public class InMemoryRunRepository {
     }
 
 
+/*
     // The @PostConstruct annotation is used to mark a method that should be executed after the dependency injection is done to perform any initialization. This method runs only once after the bean's properties have been set.
     @PostConstruct
     private void init() {
         runs.add(new Run(1, "Monday Morning Run", LocalDateTime.now(), LocalDateTime.now().plus(30, ChronoUnit.MINUTES), 3, Location.INDOOR));
         runs.add(new Run(2, "Wednesday Evening Run", LocalDateTime.now(), LocalDateTime.now().plus(60, ChronoUnit.MINUTES), 6, Location.INDOOR));
     }
+*/
 
 }
