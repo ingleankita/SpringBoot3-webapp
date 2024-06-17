@@ -1,0 +1,10 @@
+services:
+  postgres:
+    image: 'postgres:latest'
+    environment:
+      - 'POSTGRES_DB=runnerz'
+      - 'POSTGRES_PASSWORD=password'
+      - 'POSTGRES_USER=ankita'
+    ports:
+      #      port 5432 on container side maps to port 5432 on local machine
+      - '5432:5432'
