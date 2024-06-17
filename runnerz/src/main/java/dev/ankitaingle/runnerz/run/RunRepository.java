@@ -59,44 +59,11 @@ public class RunRepository {
         Assert.state(updated == 1, "Failed to delete run " + id);
     }
 
-/*  // Initial in-memory list data structure to store runs
-
-    private List<Run> runs = new ArrayList<>();
-
-    // Get all runs
-    List<Run> findAll() {
-        return runs;
+    public int count() {
+        return jdbcClient.sql("select * from run").query().listOfRows().size();
     }
 
-    // Get run by id
-    Optional<Run> findById(Integer id) {
-        return runs.stream().filter(run -> run.id() == id).findFirst();
+    public void saveAll(List<Run> runs) {
+        runs.stream().forEach(this::create);
     }
-
-    // Add a new run
-    void create(Run run) {
-        runs.add(run);
-    }
-
-    void update(Run run, Integer id) {
-        Optional<Run> existingRun = findById(id);
-        if (existingRun.isPresent()) {
-            runs.set(runs.indexOf(existingRun.get()), run);
-        }
-    }
-
-    void delete(Integer id) {
-        runs.removeIf(run -> run.id().equals(id));
-    }
-
-    /*
-     The @PostConstruct annotation is used to mark a method that should be executed after the dependency injection is
-     done to perform any initialization. This method runs only once after the bean's properties have been set.
-    * /
-    @PostConstruct
-    private void init() {
-        runs.add(new Run(1, "Monday Morning Run", LocalDateTime.now(), LocalDateTime.now().plus(30, ChronoUnit.MINUTES), 3, Location.INDOOR));
-        runs.add(new Run(2, "Wednesday Evening Run", LocalDateTime.now(), LocalDateTime.now().plus(60, ChronoUnit.MINUTES), 6, Location.INDOOR));
-    }
-*/
 }
